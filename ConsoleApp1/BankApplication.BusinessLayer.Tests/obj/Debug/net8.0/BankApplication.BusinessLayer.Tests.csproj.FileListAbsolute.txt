@@ -1,0 +1,5 @@
+C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer.Tests\obj\Debug\net8.0\BankApplication.BusinessLayer.Tests.csproj.AssemblyReference.cache
+C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer.Tests\obj\Debug\net8.0\BankApplication.BusinessLayer.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer.Tests\obj\Debug\net8.0\BankApplication.BusinessLayer.Tests.AssemblyInfoInputs.cache
+C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer.Tests\obj\Debug\net8.0\BankApplication.BusinessLayer.Tests.AssemblyInfo.cs
+C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer.Tests\obj\Debug\net8.0\BankApplication.BusinessLayer.Tests.csproj.CoreCompileInputs.cache

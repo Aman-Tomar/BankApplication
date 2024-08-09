@@ -1,0 +1,225 @@
+2024-08-09 08:35:33.5502|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.TypeInitializationException: The type initializer for 'BankApplication.BusinessLayer.src.factories.PolicyFactory' threw an exception.
+ ---> System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\src\config\Policies.properties'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllLines(String path, Encoding encoding)
+   at BankApplication.BusinessLayer.src.factories.PolicyFactory.LoadPolicies() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\factories\PolicyFactory.cs:line 27
+   at BankApplication.BusinessLayer.src.factories.PolicyFactory..ctor() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\factories\PolicyFactory.cs:line 19
+   at BankApplication.BusinessLayer.src.factories.PolicyFactory..cctor() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\factories\PolicyFactory.cs:line 15
+   --- End of inner exception stack trace ---
+   at BankApplication.BusinessLayer.src.factories.PolicyFactory.get_Instance() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\factories\PolicyFactory.cs:line 22
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 22
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+2024-08-09 08:43:33.0168|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'accounts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 260
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:01e680fc-3497-456f-8315-690a38581245
+Error Number:208,State:1,Class:16
+2024-08-09 08:44:10.3567|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'accounts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 260
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:b2717c05-a13e-48b9-881d-9c8299f045f2
+Error Number:208,State:1,Class:16
+2024-08-09 08:55:17.5414|ERROR|ConsoleApp1.Program|Error during Creating Account:|BankApplication.CommonLayer.src.exceptions.MinBalanceNeedsToBeMaintainedException: Initial balance is less than the minimum balance required.
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 26
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+2024-08-09 08:55:33.4080|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'FakeDB.accounts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 260
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:04e78d1e-f9c6-4cc7-9747-c59464a39d6e
+Error Number:208,State:1,Class:16
+2024-08-09 08:56:37.6095|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'accounts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account)
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:04e78d1e-f9c6-4cc7-9747-c59464a39d6e
+Error Number:208,State:1,Class:16
+2024-08-09 08:57:32.7985|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'dbo.accounts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account)
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:04e78d1e-f9c6-4cc7-9747-c59464a39d6e
+Error Number:208,State:1,Class:16
+2024-08-09 09:00:43.5284|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'accounts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 260
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:54532708-5d3b-43dc-8e20-c306bc104329
+Error Number:208,State:1,Class:16
+2024-08-09 09:02:20.8910|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'accounts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 262
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:b08e04a2-702d-4706-aa05-99a957b65ef7
+Error Number:208,State:1,Class:16
+2024-08-09 09:08:03.3400|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the CHECK constraint "Check_accType". The conflict occurred in database "BankDB", table "dbo.accounts", column 'accType'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 262
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:e11aa9f3-1834-4357-859d-fa2557ba2bf3
+Error Number:547,State:0,Class:16
+2024-08-09 09:11:55.9998|ERROR|ConsoleApp1.Program|Error during Creating Account:|BankApplication.CommonLayer.src.exceptions.InvalidPolicyTypeException: Invalid policy type.
+   at BankApplication.BusinessLayer.src.factories.PolicyFactory.CreatePolicy(String accType, String privilege) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\factories\PolicyFactory.cs:line 53
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 22
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+2024-08-09 09:13:45.4059|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the CHECK constraint "Check_accType". The conflict occurred in database "BankDB", table "dbo.accounts", column 'accType'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 262
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:c124e382-9a9b-49c1-bd74-da976bac6ccf
+Error Number:547,State:0,Class:16
+2024-08-09 09:21:05.0258|ERROR|ConsoleApp1.Program|Error during Creating Account:|System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the CHECK constraint "Check_privilegeType". The conflict occurred in database "BankDB", table "dbo.accounts", column 'privilegeType'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Save(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 262
+   at BankApplication.BusinessLayer.src.managers.AccountManager.CreateAccount(String name, String pin, Double balance, PrivilegeType privilegeType, AccountType accountType) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 33
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+ClientConnectionId:77a40fbe-e879-4e87-9e1a-aa82cd4277a0
+Error Number:547,State:0,Class:16
+2024-08-09 09:23:22.1814|ERROR|ConsoleApp1.Program|Error during Deposit|System.ArgumentException: No mapping exists from object type BankApplication.CommonLayer.src.models.SavingAccount to a known managed provider native type.
+   at System.Data.SqlClient.MetaType.GetMetaTypeFromValue(Type dataType, Object value, Boolean inferLen, Boolean streamAllowed)
+   at System.Data.SqlClient.MetaType.GetMetaTypeFromType(Type dataType)
+   at System.Data.SqlClient.SqlParameter.GetMetaTypeOnly()
+   at System.Data.SqlClient.SqlParameter.Validate(Int32 index, Boolean isCommandProc)
+   at System.Data.SqlClient.SqlCommand.BuildParamList(TdsParser parser, SqlParameterCollection parameters)
+   at System.Data.SqlClient.SqlCommand.BuildExecuteSql(CommandBehavior behavior, String commandText, SqlParameterCollection parameters, _SqlRPC& rpc)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.TransactionsDbRepository.Save(Transaction transaction) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\TransactionsDbRepository.cs:line 182
+   at BankApplication.BusinessLayer.src.managers.AccountManager.Deposit(IAccount toAccount, Double amount) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 55
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 94
+2024-08-09 10:49:32.7852|ERROR|ConsoleApp1.Program|Error during Deposit|System.InvalidCastException: Unable to cast object of type 'System.Single' to type 'System.Double'.
+   at BankApplication.DataAccessLayer.AccountsDbRepository.GetById(String accNo) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 130
+   at BankApplication.BusinessLayer.src.managers.AccountManager.Deposit(String toAccountNo, Double amount) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 42
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 90
+2024-08-09 10:57:07.4858|ERROR|ConsoleApp1.Program|Error during Deposit|System.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK__transact__DB107FA7A349494E'. Cannot insert duplicate key in object 'dbo.transactions'. The duplicate key value is (1000).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.TransactionsDbRepository.Save(Transaction transaction) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\TransactionsDbRepository.cs:line 182
+   at BankApplication.BusinessLayer.src.managers.AccountManager.Deposit(String toAccountNo, Double amount) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 58
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 90
+ClientConnectionId:bd01fa50-e3cb-44dd-a070-799c0a44ac59
+Error Number:2627,State:1,Class:14
+2024-08-09 11:08:14.6634|ERROR|ConsoleApp1.Program|Error during Deposit|System.Data.SqlClient.SqlException (0x80131904): The UPDATE statement conflicted with the CHECK constraint "Check_accType". The conflict occurred in database "BankDB", table "dbo.accounts", column 'accType'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at BankApplication.DataAccessLayer.AccountsDbRepository.Update(IAccount account) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\AccountsDbRepository.cs:line 324
+   at BankApplication.BusinessLayer.src.managers.AccountManager.Deposit(String toAccountNo, Double amount) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 59
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 90
+ClientConnectionId:54fdc3b0-ccbd-41f2-9ae8-e713a1763030
+Error Number:547,State:0,Class:16

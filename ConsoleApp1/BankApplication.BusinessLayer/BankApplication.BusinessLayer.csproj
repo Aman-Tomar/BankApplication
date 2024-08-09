@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="src\properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BankApplication.CommonLayer\BankApplication.CommonLayer.csproj" />
+    <ProjectReference Include="..\BankApplication.DataAccessLayer\BankApplication.DataAccessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="src\properties\dailyLimit.properties">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="src\properties\Policies.properties">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="src\properties\serviceBanks.properties">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
