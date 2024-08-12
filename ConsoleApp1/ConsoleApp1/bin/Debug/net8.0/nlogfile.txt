@@ -1,0 +1,8 @@
+`2024-08-09 12:20:42.7172|ERROR|ConsoleApp1.Program|Error During TransferFunds|System.NotImplementedException: The method or operation is not implemented.
+   at BankApplication.BusinessLayer.src.utils.TransactionLog.LogTransaction(String accNo, Object dEPOSIT, Transaction transaction) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\utils\TransactionLog.cs:line 68
+   at BankApplication.BusinessLayer.src.managers.AccountManager.TransferFunds(Transfer transfer) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 150
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 144`
+`2024-08-09 12:23:10.7724|ERROR|ConsoleApp1.Program|Error During TransferFunds|System.NotImplementedException: The method or operation is not implemented.
+   at BankApplication.BusinessLayer.src.utils.TransactionLog.LogTransaction(String accNo, Object dEPOSIT, Transaction transaction) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\utils\TransactionLog.cs:line 68
+   at BankApplication.BusinessLayer.src.managers.AccountManager.TransferFunds(Transfer transfer) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 150
+   at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 144`

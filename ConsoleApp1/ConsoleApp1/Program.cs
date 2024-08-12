@@ -1,7 +1,10 @@
 ﻿using BankApplication.BusinessLayer.src.managers;
 using BankApplication.BusinessLayer.src.models;
+using BankApplication.BusinessLayer.src.services;
 using BankApplication.CommonLayer.src.enums;
 using BankApplication.CommonLayer.src.interfaces;
+using BankApplication.CommonLayer.src.models;
+using BankApplication.DataAccessLayer;
 
 namespace ConsoleApp1
 {
@@ -10,7 +13,7 @@ namespace ConsoleApp1
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         static void Main()
         {
-            AccountManager accountManager = new AccountManager();
+            AccountManagerWrapper accountManager = new AccountManagerWrapper();
             IAccount account1 = null;
             IAccount account2 = null;
             Console.WriteLine("----------------------------------------------------------------------------------");
@@ -129,58 +132,31 @@ namespace ConsoleApp1
                         break;
 
                     case "4":
-                        if (account1 == null || account2 == null)
-                        {
-                            Console.WriteLine("----------------------------------------------------------------------------------");
-                            Console.WriteLine("Both accounts must be created before transferring funds.");
-                            Console.WriteLine("----------------------------------------------------------------------------------");
-                            break;
-                        }
-
                         Console.Write("Enter From Account Number: ");
-                        string fromAccNo = Console.ReadLine().ToUpper();
+                        string fromAccountNo = Console.ReadLine().ToUpper();
                         Console.Write("Enter To Account Number: ");
-                        string toAccNo = Console.ReadLine().ToUpper();
+                        string toAccountNo = Console.ReadLine().ToUpper();
                         Console.Write("Enter PIN: ");
-                        string transferPin = Console.ReadLine();
+                        string fromAccountPin = Console.ReadLine();
                         Console.Write("Enter Amount to Transfer: ");
                         double transferAmount = double.Parse(Console.ReadLine());
 
-                        IAccount fromAccount = (fromAccNo == account1?.AccNo) ? account1 : (fromAccNo == account2?.AccNo) ? account2 : null;
-                        IAccount toAccount = (toAccNo == account1?.AccNo) ? account1 : (toAccNo == account2?.AccNo) ? account2 : null;
-
-                        if (fromAccount != null && toAccount != null)
+                        try
                         {
-                            try
-                            {
-                                Transfer transfer = new Transfer
-                                {
-                                    FromAccount = fromAccount,
-                                    ToAccount = toAccount,
-                                    Amount = transferAmount,
-                                    FromPin = transferPin
-                                };
-                                accountManager.TransferFunds(transfer);
-                                Console.WriteLine("----------------------------------------------------------------------------------");
-                                Console.WriteLine("Transfer successful!");
-                                Console.WriteLine($"New Balance of From Account: {fromAccount.Balance}");
-                                Console.WriteLine($"New Balance of To Account: {toAccount.Balance}");
-                                Console.WriteLine("----------------------------------------------------------------------------------");
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine("----------------------------------------------------------------------------------");
-                                Console.WriteLine($"Error: {ex.Message}");
-                                Console.WriteLine("----------------------------------------------------------------------------------");
-                                logger.Error(ex, "Error During TransferFunds");
-
-                            }
+                            Transfer transfer = new Transfer(fromAccountNo, toAccountNo, transferAmount, fromAccountPin);
+                            accountManager.TransferFunds(transfer);
+                            Console.WriteLine("----------------------------------------------------------------------------------");
+                            Console.WriteLine("Transfer successful!");
+                            // Console.WriteLine($"New Balance of From Account: {fromAccount.Balance}");
+                            // Console.WriteLine($"New Balance of To Account: {toAccount.Balance}");
+                            Console.WriteLine("----------------------------------------------------------------------------------");
                         }
-                        else
+                        catch (Exception ex)
                         {
                             Console.WriteLine("----------------------------------------------------------------------------------");
-                            Console.WriteLine("Account not found.");
+                            Console.WriteLine($"Error: {ex.Message}");
                             Console.WriteLine("----------------------------------------------------------------------------------");
+                            logger.Error(ex, "Error During TransferFunds");
                         }
                         break;
 

@@ -3,27 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|c:\\users\\aman.tomar\\source\\bankapplication\\consoleapp1\\bankapplication.businesslayer\\src\\factories\\accountfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|solutionrelative:bankapplication.businesslayer\\src\\factories\\accountfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22A0A7B-68C1-406F-AEF1-936329EBDBBC}|BankApplication.BusinessLayer.Tests\\BankApplication.BusinessLayer.Tests.csproj|c:\\users\\aman.tomar\\source\\bankapplication\\consoleapp1\\bankapplication.businesslayer.tests\\accountmanagertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22A0A7B-68C1-406F-AEF1-936329EBDBBC}|BankApplication.BusinessLayer.Tests\\BankApplication.BusinessLayer.Tests.csproj|solutionrelative:bankapplication.businesslayer.tests\\accountmanagertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|c:\\users\\aman.tomar\\source\\bankapplication\\consoleapp1\\bankapplication.businesslayer\\src\\managers\\accountprivilegemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|solutionrelative:bankapplication.businesslayer\\src\\managers\\accountprivilegemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|c:\\users\\aman.tomar\\source\\bankapplication\\consoleapp1\\bankapplication.businesslayer\\src\\managers\\accountmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|solutionrelative:bankapplication.businesslayer\\src\\managers\\accountmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|c:\\users\\aman.tomar\\source\\bankapplication\\consoleapp1\\bankapplication.businesslayer\\src\\models\\externaltransfer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|solutionrelative:bankapplication.businesslayer\\src\\models\\externaltransfer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE6A59F0-9888-43F7-9E51-2F0F8C07E321}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\aman.tomar\\source\\bankapplication\\consoleapp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE6A59F0-9888-43F7-9E51-2F0F8C07E321}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|c:\\users\\aman.tomar\\source\\bankapplication\\consoleapp1\\bankapplication.businesslayer\\src\\utils\\transactionlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{789697DD-42EB-4601-B431-255FBA66FA27}|BankApplication.BusinessLayer\\BankApplication.BusinessLayer.csproj|solutionrelative:bankapplication.businesslayer\\src\\utils\\transactionlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DA1945A-0C7D-4414-B8C4-7393E5496432}|BankApplication.DataAccessLayer\\BankApplication.DataAccessLayer.csproj|c:\\users\\aman.tomar\\source\\bankapplication\\consoleapp1\\bankapplication.dataaccesslayer\\accountsdbrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DA1945A-0C7D-4414-B8C4-7393E5496432}|BankApplication.DataAccessLayer\\BankApplication.DataAccessLayer.csproj|solutionrelative:bankapplication.dataaccesslayer\\accountsdbrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__mssqllocaldb/BankDB/True/SqlTable/dbo.transactions.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -45,77 +38,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ExternalTransfer.cs",
-              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\models\\ExternalTransfer.cs",
-              "RelativeDocumentMoniker": "BankApplication.BusinessLayer\\src\\models\\ExternalTransfer.cs",
-              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\models\\ExternalTransfer.cs",
-              "RelativeToolTip": "BankApplication.BusinessLayer\\src\\models\\ExternalTransfer.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAjwBEAAABIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T05:43:24.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountManager.cs",
-              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\managers\\AccountManager.cs",
-              "RelativeDocumentMoniker": "BankApplication.BusinessLayer\\src\\managers\\AccountManager.cs",
-              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\managers\\AccountManager.cs",
-              "RelativeToolTip": "BankApplication.BusinessLayer\\src\\managers\\AccountManager.cs",
-              "ViewState": "AQIAAIAAAAAAAAAAAAAjwIwAAABjAAAA",
+              "Title": "AccountFactory.cs",
+              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\factories\\AccountFactory.cs",
+              "RelativeDocumentMoniker": "BankApplication.BusinessLayer\\src\\factories\\AccountFactory.cs",
+              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\factories\\AccountFactory.cs",
+              "RelativeToolTip": "BankApplication.BusinessLayer\\src\\factories\\AccountFactory.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T05:42:31.638Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TransactionLog.cs",
-              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\utils\\TransactionLog.cs",
-              "RelativeDocumentMoniker": "BankApplication.BusinessLayer\\src\\utils\\TransactionLog.cs",
-              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\utils\\TransactionLog.cs",
-              "RelativeToolTip": "BankApplication.BusinessLayer\\src\\utils\\TransactionLog.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAMwD4AAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T05:41:00.557Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "dbo.transactions [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__mssqllocaldb/BankDB/True/SqlTable/dbo.transactions.sql",
-              "ToolTip": "dbo.transactions [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-08-09T05:39:47.807Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccountsDbRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.DataAccessLayer\\AccountsDbRepository.cs",
-              "RelativeDocumentMoniker": "BankApplication.DataAccessLayer\\AccountsDbRepository.cs",
-              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.DataAccessLayer\\AccountsDbRepository.cs",
-              "RelativeToolTip": "BankApplication.DataAccessLayer\\AccountsDbRepository.cs",
-              "ViewState": "AQIAALkAAAAAAAAAAAA7wDYBAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T05:38:53.276Z",
+              "WhenOpened": "2024-08-12T01:46:19.737Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\ConsoleApp1\\Program.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
-              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\ConsoleApp1\\Program.cs",
-              "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AQIAAEQAAAAAAAAAAAAIwFkAAAAyAAAA",
+              "Title": "AccountPrivilegeManager.cs",
+              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\managers\\AccountPrivilegeManager.cs",
+              "RelativeDocumentMoniker": "BankApplication.BusinessLayer\\src\\managers\\AccountPrivilegeManager.cs",
+              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\managers\\AccountPrivilegeManager.cs",
+              "RelativeToolTip": "BankApplication.BusinessLayer\\src\\managers\\AccountPrivilegeManager.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAA6wBUAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T03:57:53.177Z",
+              "WhenOpened": "2024-08-12T01:42:05.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountManager.cs",
+              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\managers\\AccountManager.cs",
+              "RelativeDocumentMoniker": "BankApplication.BusinessLayer\\src\\managers\\AccountManager.cs",
+              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer\\src\\managers\\AccountManager.cs",
+              "RelativeToolTip": "BankApplication.BusinessLayer\\src\\managers\\AccountManager.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAAAF0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T01:37:48.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountManagerTest.cs",
+              "DocumentMoniker": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer.Tests\\AccountManagerTest.cs",
+              "RelativeDocumentMoniker": "BankApplication.BusinessLayer.Tests\\AccountManagerTest.cs",
+              "ToolTip": "C:\\Users\\Aman.Tomar\\source\\BankApplication\\ConsoleApp1\\BankApplication.BusinessLayer.Tests\\AccountManagerTest.cs",
+              "RelativeToolTip": "BankApplication.BusinessLayer.Tests\\AccountManagerTest.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAkwFEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T01:27:50.812Z",
               "EditorCaption": ""
             }
           ]

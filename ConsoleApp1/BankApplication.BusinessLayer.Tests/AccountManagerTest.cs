@@ -28,7 +28,7 @@ namespace BankApplication.BusinessLayer.Tests
             string pin = "1234";
             double balance = 100000.0;
             PrivilegeType privilegeType = PrivilegeType.GOLD;
-            AccountType accountType = AccountType.SAVINGS;
+            AccountType accountType = AccountType.SAVING;
 
             // Act
             var result = target.CreateAccount(name, pin, balance, privilegeType, accountType);
@@ -66,7 +66,18 @@ namespace BankApplication.BusinessLayer.Tests
         [TestMethod, ExpectedException(typeof(AccountDoesNotExistException))]
         public void Deposit_WithNullAccount_ShouldThrowException()
         {
+            var account = new CurrentAccount();
 
+            var result = target.Deposit(account, 50.0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDepositAmountException))]
+        public void Deposit_AmountIsZero_ThrowsInvalidDepositAmountException()
+        {
+            var account = new SavingAccount { AccNo = "12345", Balance = 1000.0 };
+
+            var result = target.Deposit(account, 0.0);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace BankApplication.BusinessLayer.src.models
 {
     public class Transfer
     {
-        public IAccount FromAccount { get; set; }
-        public IAccount ToAccount { get; set; }
+        public string FromAccountNo { get; set; }
+        public string ToAccountNo { get; set; }
         public double Amount { get; set; }
         public string FromPin { get; set; }
 
@@ -18,10 +18,10 @@ namespace BankApplication.BusinessLayer.src.models
         {
 
         }
-        public Transfer(IAccount fromAccount, IAccount toAccount, double amount, string fromPin)
+        public Transfer(string fromAccountNo, string toAccountNo, double amount, string fromPin)
         {
-            FromAccount = fromAccount;
-            ToAccount = toAccount;
+            FromAccountNo = fromAccountNo;
+            ToAccountNo = toAccountNo;
             Amount = amount;
             FromPin = fromPin;
         }

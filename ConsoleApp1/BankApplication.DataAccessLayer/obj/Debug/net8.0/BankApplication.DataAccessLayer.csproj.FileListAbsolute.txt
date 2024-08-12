@@ -14,3 +14,4 @@ C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAcces
 C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\obj\Debug\net8.0\BankApplication.DataAccessLayer.pdb
 C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\obj\Debug\net8.0\ref\BankApplication.DataAccessLayer.dll
 C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\bin\Debug\net8.0\src\properties\IdNumber.properties
+C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.DataAccessLayer\obj\Debug\net8.0\BankApplication.DataAccessLayer.sourcelink.json

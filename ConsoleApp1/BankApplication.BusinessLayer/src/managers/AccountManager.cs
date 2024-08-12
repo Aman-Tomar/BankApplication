@@ -16,6 +16,13 @@ namespace BankApplication.BusinessLayer.src.managers
 {
     public class AccountManager
     {
+        private IAccountsRepository accountsRepository;
+
+        public AccountManager()
+        {
+            accountsRepository = new AccountsDbRepository();
+        }
+
         public IAccount CreateAccount(string name, string pin, double balance, PrivilegeType privilegeType, AccountType accountType)
         {
             IAccount account = AccountFactory.CreateAccount(name, pin, balance, privilegeType, accountType);
@@ -29,18 +36,11 @@ namespace BankApplication.BusinessLayer.src.managers
             ((Account)account).Policy = policy;
             account.Open();
 
-            AccountsDbRepository accountsDbRepository = new AccountsDbRepository();
-            accountsDbRepository.Save(account);
-
             return account;
         }
 
-        public bool Deposit(string toAccountNo, double amount)
+        public bool Deposit(Account toAccount, double amount)
         {
-            // Get account details from database
-            AccountsDbRepository accountsDbRepository = new AccountsDbRepository();
-            Account toAccount = (Account)accountsDbRepository.GetById(toAccountNo);
-
             if (toAccount == null)
             {
                 throw new AccountDoesNotExistException("Account does not exist.");
@@ -50,23 +50,13 @@ namespace BankApplication.BusinessLayer.src.managers
                 throw new InvalidDepositAmountException("Deposit amount must be greater than 0.");
             }
 
-            Transaction transaction = new Transaction(toAccount, amount, TransactionType.DEPOSIT);
             toAccount.Balance += amount;
-            TransactionLog.LogTransaction(toAccount.AccNo, transaction);
-
-            TransactionsDbRepository transactionsDbRepository = new TransactionsDbRepository();
-            transactionsDbRepository.Save(transaction);
-            accountsDbRepository.Update(toAccount);
-
             return true;
         }
 
-        public bool Withdraw(string fromAccountNo, string pin, double amount)
+        public bool Withdraw(Account fromAccount, string pin, double amount)
         {
-            // Get account details from bank
-            AccountsDbRepository accountsDbRepository = new AccountsDbRepository();
-            Account fromAccount = (Account)accountsDbRepository.GetById(fromAccountNo);
-
+            
             if (fromAccount == null)
             {
                 throw new AccountDoesNotExistException("Account does not exist.");
@@ -99,21 +89,12 @@ namespace BankApplication.BusinessLayer.src.managers
                 throw new DailyLimitExceededException("Daily Limit Exceeded.");
             }
 
-            Transaction transaction = new Transaction(fromAccount, amount, TransactionType.WITHDRAW);
             fromAccount.Balance -= amount;
-            TransactionLog.LogTransaction(fromAccount.AccNo, transaction);
-
-            TransactionsDbRepository transactionsDbRepository = new TransactionsDbRepository();
-            transactionsDbRepository.Save(transaction);
-            accountsDbRepository.Update(fromAccount);
-
             return true;
         }
 
-        public bool TransferFunds(Transfer transfer)
+        public bool TransferFunds(Transfer transfer, Account fromAccount, Account toAccount)
         {
-            Account fromAccount = (Account)transfer.FromAccount;
-            Account toAccount = (Account)transfer.ToAccount;
             double amount = transfer.Amount;
             string fromPin = transfer.FromPin;
 
@@ -127,7 +108,8 @@ namespace BankApplication.BusinessLayer.src.managers
                 throw new InvalidPinException("Invalid PIN.");
             }
 
-            if (fromAccount.Balance - amount < fromAccount.Policy.GetMinBalance())
+            IPolicy policy = PolicyFactory.Instance.CreatePolicy(fromAccount.GetAccType().ToString(), fromAccount.PrivilegeType.ToString());
+            if (fromAccount.Balance - amount < policy.GetMinBalance())
             {
                 throw new MinBalanceNeedsToBeMaintainedException("Cannot transfer due to required minimum balance.");
             }
@@ -140,23 +122,13 @@ namespace BankApplication.BusinessLayer.src.managers
                 throw new DailyLimitExceededException("Daily limit exceeded.");
             }
 
-            Transaction transaction = new Transaction(fromAccount, amount, TransactionType.TRANSFER);
             fromAccount.Balance -= amount;
             toAccount.Balance += amount;
-
-            TransactionLog.LogTransaction(fromAccount.AccNo, TransactionType.TRANSFER, transaction);
-            TransactionLog.LogTransaction(toAccount.AccNo, TransactionType.TRANSFER, transaction);
-
-            TransactionsDbRepository transactionsDbRepository = new TransactionsDbRepository(); 
-            transactionsDbRepository.Save(transaction);
-
             return true;
         }
 
-        public bool TransferFunds(ExternalTransfer externalTransfer)
+        public bool TransferFunds(ExternalTransfer externalTransfer, IAccount fromAccount)
         {
-            IAccount fromAccount = externalTransfer.FromAccount;
-            ExternalAccount externalAccount = externalTransfer.ToExternalAccount;
             double amount = externalTransfer.Amount;
             string fromPin = externalTransfer.FromAccountPin;
 

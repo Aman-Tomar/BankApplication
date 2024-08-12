@@ -39,3 +39,4 @@ C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\obj\Debug\net
 C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ref\ConsoleApp1.dll
 C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\NLog.dll
 C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\src\properties\IdNumber.properties
+C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json

@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using BankApplication.CommonLayer.src.enums;
 using BankApplication.CommonLayer.src.models;
 using BankApplication.DataAccessLayer.utils;
+using System.Net.NetworkInformation;
+using System.Xml.Linq;
 
 namespace BankApplication.DataAccessLayer
 {
@@ -43,6 +45,7 @@ namespace BankApplication.DataAccessLayer
                     accountCountByType.Add(accType, count);
                 }
             }
+            conn.Close();
             return accountCountByType;
         }
 
@@ -62,41 +65,24 @@ namespace BankApplication.DataAccessLayer
             while (reader.Read())
             {
                 IAccount account = null;
-                string accNo = reader["accNo"].ToString();
-                string name = reader["name"].ToString();
-                string pin = reader["pin"].ToString();
-                bool active = Convert.ToBoolean(reader["active"]);
-                DateTime dateOfOpening = Convert.ToDateTime(reader["dateOfOpening"]);
-                double balance = (double)reader["balance"];
-                PrivilegeType privilegeType = (PrivilegeType)Enum.Parse(typeof(PrivilegeType), reader["privilegeType"].ToString());
                 AccountType accountType = (AccountType)Enum.Parse(typeof(AccountType), reader["accType"].ToString());
 
                 if (accountType == AccountType.SAVING)
                 {
-                    account = new SavingAccount
-                    {
-                        AccNo = accNo,
-                        Name = name,
-                        Pin = pin,
-                        Active = active,
-                        DateOfOpening = dateOfOpening,
-                        Balance = balance,
-                        PrivilegeType = privilegeType,
-                    };
+                    account = new SavingAccount();
                 }
                 else
                 {
-                    account = new CurrentAccount
-                    {
-                        AccNo = accNo,
-                        Name = name,
-                        Pin = pin,
-                        Active = active,
-                        DateOfOpening = dateOfOpening,
-                        Balance = balance,
-                        PrivilegeType = privilegeType,
-                    };
+                    account = new CurrentAccount();
                 }
+                account.AccNo = Convert.ToString(reader["accNo"]);
+                account.Name = Convert.ToString(reader["name"]);
+                account.Pin = Convert.ToString(reader["pin"]);
+                account.Active = Convert.ToBoolean(reader["active"]);
+                account.DateOfOpening = Convert.ToDateTime(reader["dateOfOpening"]);
+                account.Balance = Convert.ToDouble(reader["balance"]);
+                account.PrivilegeType = (PrivilegeType)Enum.Parse(typeof(PrivilegeType), reader["privilegeType"].ToString());
+
                 accountsList.Add(account);
             }
             conn.Close();
@@ -123,40 +109,23 @@ namespace BankApplication.DataAccessLayer
             IDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                string name = reader["name"].ToString();
-                string pin = reader["pin"].ToString();
-                bool active = Convert.ToBoolean(reader["active"]);
-                DateTime dateOfOpening = Convert.ToDateTime(reader["dateOfOpening"]);
-                double balance = Convert.ToDouble(reader["balance"]);
-                PrivilegeType privilegeType = (PrivilegeType)Enum.Parse(typeof(PrivilegeType), reader["privilegeType"].ToString());
                 AccountType accountType = (AccountType)Enum.Parse(typeof(AccountType), reader["accType"].ToString());
 
                 if (accountType == AccountType.SAVING)
                 {
-                    account = new SavingAccount
-                    {
-                        AccNo = accNo,
-                        Name = name,
-                        Pin = pin,
-                        Active = active,
-                        DateOfOpening = dateOfOpening,
-                        Balance = balance,
-                        PrivilegeType = privilegeType,
-                    };
+                    account = new SavingAccount();
                 }
                 else
                 {
-                    account = new CurrentAccount
-                    {
-                        AccNo = accNo,
-                        Name = name,
-                        Pin = pin,
-                        Active = active,
-                        DateOfOpening = dateOfOpening,
-                        Balance = balance,
-                        PrivilegeType = privilegeType,
-                    };
+                    account = new CurrentAccount();
                 }
+                account.AccNo = accNo;
+                account.Name = Convert.ToString(reader["name"]);
+                account.Pin = Convert.ToString(reader["pin"]);
+                account.Active = Convert.ToBoolean(reader["active"]);
+                account.DateOfOpening = Convert.ToDateTime(reader["dateOfOpening"]);
+                account.Balance = Convert.ToDouble(reader["balance"]);
+                account.PrivilegeType = (PrivilegeType)Enum.Parse(typeof(PrivilegeType), reader["privilegeType"].ToString());
             }
             conn.Close();
             return account;
@@ -179,7 +148,7 @@ namespace BankApplication.DataAccessLayer
             {
                 totalNoOfAccounts = Convert.ToInt64(reader[0]);
             }
-
+            conn.Close();
             return totalNoOfAccounts;
         }
 
@@ -200,15 +169,13 @@ namespace BankApplication.DataAccessLayer
             {
                 totalWorth = Convert.ToDouble(reader[0]);
             }
-
+            conn.Close();
             return totalWorth;
         }
 
         public void Save(IAccount account)
         {
             IDbConnection conn = DbHelper.GetConnection();
-
-            Console.WriteLine("IDbConnection" + conn);
 
             string sqlInsert = $"insert into accounts values (@accNo, @name, @pin, @active, @dateOfOpening, @balance, @privilegeType, @accType)";
 
