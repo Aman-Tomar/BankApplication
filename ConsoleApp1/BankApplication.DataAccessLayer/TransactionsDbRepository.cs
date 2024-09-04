@@ -14,10 +14,19 @@ using BankApplication.DataAccessLayer.utils;
 
 namespace BankApplication.DataAccessLayer
 {
+    /// <summary>
+    /// Implementation of the ITransactionRepository interface for managing transaction data in the database.
+    /// </summary>
     public class TransactionsDbRepository : ITransactionRepository
     {
+        /// <summary>
+        /// Retrieves all transactions from the database.
+        /// </summary>
+        /// <returns>A list of all transactions.</returns>
         public List<Transaction> GetAll()
-        {
+        { 
+            AccountsDbRepository _accountDbRepository = new AccountsDbRepository();
+
             IDbConnection conn = DbHelper.GetConnection();
 
             string sqlSelect = $"select * from transactions";
@@ -26,33 +35,48 @@ namespace BankApplication.DataAccessLayer
             cmd.CommandText = sqlSelect;
             cmd.Connection = conn;
 
-            conn.Open();
-            IDataReader reader = cmd.ExecuteReader();
-            List<Transaction> transactionsList = new List<Transaction>();
-            while (reader.Read())
+            try
             {
-                int transId = Convert.ToInt32(reader["transId"]);
-                TransactionType transactionType = (TransactionType)Enum.Parse(typeof(TransactionType), reader["transactionType"].ToString());
-                string accNo = reader["accNo"].ToString();
-                double amount = Convert.ToDouble(reader["amount"]);
-                DateTime transDate = Convert.ToDateTime(reader["transDate"]);
-                TransactionStatus transStatus = (TransactionStatus)Enum.Parse(typeof(TransactionStatus), reader["transStatus"].ToString());
-
-                Transaction transaction = new Transaction
+                conn.Open();
+                IDataReader reader = cmd.ExecuteReader();
+                List<Transaction> transactionsList = new List<Transaction>();
+                while (reader.Read())
                 {
-                    TransID = transId,
-                    TransactionType = transactionType,
-                    FromAccount = new SavingAccount(),
-                    TranDate = transDate,
-                    Amount = amount,
-                    Status = transStatus
-                };
-                transactionsList.Add(transaction);
+                    int transId = Convert.ToInt32(reader["transId"]);
+                    TransactionType transactionType = (TransactionType)Enum.Parse(typeof(TransactionType), reader["transactionType"].ToString());
+                    string accNo = reader["accNo"].ToString();
+                    double amount = Convert.ToDouble(reader["amount"]);
+                    DateTime transDate = Convert.ToDateTime(reader["transDate"]);
+                    TransactionStatus transStatus = (TransactionStatus)Enum.Parse(typeof(TransactionStatus), reader["transStatus"].ToString());
+
+                    Transaction transaction = new Transaction
+                    {
+                        TransID = transId,
+                        TransactionType = transactionType,
+                        FromAccount = _accountDbRepository.GetById(accNo),
+                        TranDate = transDate,
+                        Amount = amount,
+                        Status = transStatus
+                    };
+                    transactionsList.Add(transaction);
+                }
+                return transactionsList;
             }
-            conn.Close();
-            return transactionsList;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
+        /// <summary>
+        /// Retrieves a transaction by its transaction ID.
+        /// </summary>
+        /// <param name="transId">The transaction ID of the transaction to retrieve.</param>
+        /// <returns>The transaction with the specified transaction ID.</returns>
         public Transaction GetById(int transId)
         {
             IDbConnection conn = DbHelper.GetConnection();
@@ -68,31 +92,46 @@ namespace BankApplication.DataAccessLayer
             p1.Value = transId;
             cmd.Parameters.Add(p1);
 
-            conn.Open();
-            IDataReader reader = cmd.ExecuteReader();
-            Transaction transaction = null;
-            while (reader.Read())
+            try
             {
-                TransactionType transactionType = (TransactionType)Enum.Parse(typeof(TransactionType), reader["transactionType"].ToString());
-                string accNo = reader["accNo"].ToString();
-                double amount = Convert.ToDouble(reader["amount"]);
-                DateTime transDate = Convert.ToDateTime(reader["transDate"]);
-                TransactionStatus transStatus = (TransactionStatus)Enum.Parse(typeof(TransactionStatus), reader["transStatus"].ToString());
-
-                transaction = new Transaction
+                conn.Open();
+                IDataReader reader = cmd.ExecuteReader();
+                Transaction transaction = null;
+                while (reader.Read())
                 {
-                    TransID = transId,
-                    TransactionType = transactionType,
-                    FromAccount = new SavingAccount(),
-                    TranDate = transDate,
-                    Amount = amount,
-                    Status = transStatus
-                };
+                    TransactionType transactionType = (TransactionType)Enum.Parse(typeof(TransactionType), reader["transactionType"].ToString());
+                    string accNo = reader["accNo"].ToString();
+                    double amount = Convert.ToDouble(reader["amount"]);
+                    DateTime transDate = Convert.ToDateTime(reader["transDate"]);
+                    TransactionStatus transStatus = (TransactionStatus)Enum.Parse(typeof(TransactionStatus), reader["transStatus"].ToString());
+
+                    transaction = new Transaction
+                    {
+                        TransID = transId,
+                        TransactionType = transactionType,
+                        FromAccount = new SavingAccount(),
+                        TranDate = transDate,
+                        Amount = amount,
+                        Status = transStatus
+                    };
+                }
+                return transaction;
             }
-            conn.Close();
-            return transaction;
+            catch (Exception ex) 
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
+        /// <summary>
+        /// Retrieves transactions of a specific type from the database.
+        /// </summary>
+        /// <param name="transactionType">The type of transactions to retrieve.</param>
+        /// <returns>A list of transactions of the specified type.</returns>
         public List<Transaction> GetByType(TransactionType transactionType)
         {
             IDbConnection conn = DbHelper.GetConnection();
@@ -108,34 +147,48 @@ namespace BankApplication.DataAccessLayer
             p1.Value = transactionType;
             cmd.Parameters.Add(p1);
 
-            conn.Open();
-            IDataReader reader = cmd.ExecuteReader();
-            List<Transaction> transactionsList = new List<Transaction>();
-            while (reader.Read())
+            try
             {
-                Transaction transaction = null;
-
-                int transId = Convert.ToInt32(reader["transId"]);
-                string accNo = reader["accNo"].ToString();
-                double amount = Convert.ToDouble(reader["amount"]);
-                DateTime transDate = Convert.ToDateTime(reader["transDate"]);
-                TransactionStatus transStatus = (TransactionStatus)Enum.Parse(typeof(TransactionStatus), reader["transStatus"].ToString());
-
-                transaction = new Transaction
+                conn.Open();
+                IDataReader reader = cmd.ExecuteReader();
+                List<Transaction> transactionsList = new List<Transaction>();
+                while (reader.Read())
                 {
-                    TransID = transId,
-                    TransactionType = transactionType,
-                    FromAccount = new SavingAccount(),
-                    TranDate = transDate,
-                    Amount = amount,
-                    Status = transStatus
-                };
-                transactionsList.Add(transaction);
+                    Transaction transaction = null;
+
+                    int transId = Convert.ToInt32(reader["transId"]);
+                    string accNo = reader["accNo"].ToString();
+                    double amount = Convert.ToDouble(reader["amount"]);
+                    DateTime transDate = Convert.ToDateTime(reader["transDate"]);
+                    TransactionStatus transStatus = (TransactionStatus)Enum.Parse(typeof(TransactionStatus), reader["transStatus"].ToString());
+
+                    transaction = new Transaction
+                    {
+                        TransID = transId,
+                        TransactionType = transactionType,
+                        FromAccount = new SavingAccount(),
+                        TranDate = transDate,
+                        Amount = amount,
+                        Status = transStatus
+                    };
+                    transactionsList.Add(transaction);
+                }
+                return transactionsList;
             }
-            conn.Close();
-            return transactionsList;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
+        /// <summary>
+        /// Inserts a new transaction into the database.
+        /// </summary>
+        /// <param name="transaction">The transaction to be inserted.</param>
         public void Save(Transaction transaction)
         {
             IDbConnection conn = DbHelper.GetConnection();

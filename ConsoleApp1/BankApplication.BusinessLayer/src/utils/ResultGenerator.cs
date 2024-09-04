@@ -13,6 +13,8 @@ namespace BankApplication.BusinessLayer.src.utils
 {
     public class ResultGenerator
     {
+        private static AccountsDbRepository accountsDbRepository = new AccountsDbRepository();
+
         public static void PrintAllLogTransactions()
         {
             var transactions = TransactionLog.GetTransactions();
@@ -55,26 +57,29 @@ namespace BankApplication.BusinessLayer.src.utils
             }
         }
 
-        public static void GetTotalNoOfAccounts()
+        public static int GetTotalNoOfAccounts()
         {
-            AccountsDbRepository accountsDbRepository = new AccountsDbRepository();
-            Console.WriteLine($"Total number of accounts: {accountsDbRepository.GetTotalNoOfAccounts()}");
+            return accountsDbRepository.GetTotalNoOfAccounts();
         }
 
         public static void DisplayNoOfAccTypeWise()
         {
-            AccountsDbRepository accountsDbRepository = new AccountsDbRepository();
-            var accountsCount = accountsDbRepository.GetAccountCountByType();
-            Console.WriteLine("Account Type No of Accounts");
-            foreach (var account in accountsCount)
+            var accounts = accountsDbRepository.GetAll();
+            var accountTypeCounts = accounts.GroupBy(acc => acc.GetAccType()).Select(group => new
             {
-                Console.WriteLine($"{account.Key} {account.Value}");
+                AccType = group.Key,
+                Count = group.Count()
+            }).ToList();
+
+            Console.WriteLine("Account Type No of Accounts");
+            foreach (var account in accountTypeCounts)
+            {
+                Console.WriteLine($"{account.AccType} {account.Count}");
             }
         }
 
         public static void DispTotalWorthOfBank()
         {
-            AccountsDbRepository accountsDbRepository = new AccountsDbRepository();
             double totalBalance = accountsDbRepository.GetTotalWorth();
             Console.WriteLine($"Total balance available : Rs {totalBalance:N2}");
         }
@@ -85,7 +90,7 @@ namespace BankApplication.BusinessLayer.src.utils
             Console.WriteLine("Policy Type \t\tMinimum Balance \t\tRateOfInterest");
             foreach (var policy in policies)
             {
-                Console.WriteLine($"{policy.Key} \t{policy.Value.GetMinBalance()} \t{policy.Value.GetRateOfInterest()}");
+                Console.WriteLine($"{policy.Key} \t\t{policy.Value.GetMinBalance()} \t\t{policy.Value.GetRateOfInterest()}");
             }
         }
 

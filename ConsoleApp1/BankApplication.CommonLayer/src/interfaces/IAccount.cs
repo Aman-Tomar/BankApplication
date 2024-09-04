@@ -7,6 +7,11 @@ using BankApplication.CommonLayer.src.enums;
 
 namespace BankApplication.CommonLayer.src.interfaces
 {
+    /// <summary>
+    /// Defines the contract for an account in the banking system. Implementing classes must provide
+    /// details for account management, including properties for account details and methods for
+    /// opening, closing, and retrieving account types.
+    /// </summary>
     public interface IAccount
     {
         public string AccNo { get; set; }

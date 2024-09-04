@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankApplication.CommonLayer.src.enums
 {
+    /// <summary>
+    /// Represents the status of a financial transaction.
+    /// </summary>
     public enum TransactionStatus
     {
         OPEN,

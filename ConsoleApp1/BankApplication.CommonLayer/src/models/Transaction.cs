@@ -9,6 +9,10 @@ using BankApplication.CommonLayer.src.interfaces;
 
 namespace BankApplication.CommonLayer.src.models
 {
+    /// <summary>
+    /// The <see cref="Transaction"/> class represents a financial transaction between accounts.
+    /// It includes details such as transaction ID, source account, date, amount, status, and type.
+    /// </summary>
     public class Transaction
     {
         private IAccount toAccount;
@@ -19,7 +23,18 @@ namespace BankApplication.CommonLayer.src.models
         public TransactionStatus Status { get; set; }
         public TransactionType TransactionType { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transaction"/> class.
+        /// </summary>
         public Transaction() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transaction"/> class with the specified
+        /// details including the source account, amount, and transaction type.
+        /// </summary>
+        /// <param name="fromAccount">The account from which the transaction is initiated.</param>
+        /// <param name="amount">The amount involved in the transaction.</param>
+        /// <param name="transactionType">The type of the transaction.</param>  
         public Transaction(IAccount fromAccount, double amount, TransactionType transactionType)
         {
             TransID = IDGenerator.GenerateId(); // ideally new generator
@@ -30,7 +45,14 @@ namespace BankApplication.CommonLayer.src.models
             TransactionType = transactionType;
         }
 
-       /* public Transaction(IAccount toAccount, double amount)
+        /* 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transaction"/> class with the specified
+        /// destination account and amount. (Note: This constructor is currently commented out and not used.)
+        /// </summary>
+        /// <param name="toAccount">The account to which the transaction is directed.</param>
+        /// <param name="amount">The amount involved in the transaction.</param>
+        public Transaction(IAccount toAccount, double amount)
         {
             this.toAccount = toAccount;
             Amount = amount;

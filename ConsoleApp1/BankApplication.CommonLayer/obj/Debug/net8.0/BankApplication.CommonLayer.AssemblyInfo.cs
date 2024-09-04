@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankApplication.CommonLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5575053d9bf5fb8649099f4c364cd858cb2055a5")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankApplication.CommonLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankApplication.CommonLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

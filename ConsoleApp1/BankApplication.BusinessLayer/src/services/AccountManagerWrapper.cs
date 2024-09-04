@@ -9,18 +9,23 @@ using BankApplication.CommonLayer.src.enums;
 using BankApplication.CommonLayer.src.interfaces;
 using BankApplication.CommonLayer.src.models;
 using BankApplication.DataAccessLayer;
-using BankApplication.CommonLayer.src.models;
 using BankApplication.BusinessLayer.src.models;
+using System.Security.Principal;
 
 namespace BankApplication.BusinessLayer.src.services
 {
+    /// <summary>
+    /// Provides a wrapper around account management operations, integrating with repositories for data persistence.
+    /// </summary>
     public class AccountManagerWrapper
     {
         private static IAccountsRepository accountsDbRepository;
         private static AccountManager accountManager;
         private static TransactionsDbRepository transactionsDbRepository;
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountManagerWrapper"/> class.
+        /// </summary>
         public AccountManagerWrapper()
         {
             accountsDbRepository = new AccountsDbRepository();
@@ -28,17 +33,30 @@ namespace BankApplication.BusinessLayer.src.services
             transactionsDbRepository = new TransactionsDbRepository();
         }
 
+        /// <summary>
+        /// Creates a new account and saves it to the database.
+        /// </summary>
+        /// <param name="name">The name of the account holder.</param>
+        /// <param name="pin">The PIN for the account.</param>
+        /// <param name="balance">The initial balance of the account.</param>
+        /// <param name="privilegeType">The privilege type of the account.</param>
+        /// <param name="accountType">The type of the account (e.g., SAVING, CURRENT).</param>
+        /// <returns>The created account.</returns>
         public IAccount CreateAccount(string name, string pin, double balance, PrivilegeType privilegeType, AccountType accountType)
         {
             IAccount account = accountManager.CreateAccount(name, pin, balance, privilegeType, accountType);
 
-            AccountsDbRepository accountsDbRepository = new AccountsDbRepository();
             accountsDbRepository.Save(account);
 
             return account;
         }
 
-
+        /// <summary>
+        /// Deposits money into the specified account and updates the database.
+        /// </summary>
+        /// <param name="toAccountNo">The account number where the deposit is made.</param>
+        /// <param name="amount">The amount to be deposited.</param>
+        /// <returns>True if the deposit was successful; otherwise, false.</returns>
         public bool Deposit(string toAccountNo, double amount)
         {
             Account toAccount = (Account)accountsDbRepository.GetById(toAccountNo);
@@ -56,6 +74,13 @@ namespace BankApplication.BusinessLayer.src.services
             return success;
         }
 
+        /// <summary>
+        /// Withdraws money from the specified account and updates the database.
+        /// </summary>
+        /// <param name="fromAccountNo">The account number from which the withdrawal is made.</param>
+        /// <param name="pin">The PIN of the account.</param>
+        /// <param name="amount">The amount to be withdrawn.</param>
+        /// <returns>True if the withdrawal was successful; otherwise, false.</returns>
         public bool Withdraw(string fromAccountNo, string pin, double amount)
         {
             Account fromAccount = (Account)accountsDbRepository.GetById(fromAccountNo);
@@ -67,13 +92,18 @@ namespace BankApplication.BusinessLayer.src.services
                 Transaction transaction = new Transaction(fromAccount, amount, TransactionType.WITHDRAW);
                 TransactionLog.LogTransaction(fromAccount.AccNo, transaction);
 
-                TransactionsDbRepository transactionsDbRepository = new TransactionsDbRepository();
                 transactionsDbRepository.Save(transaction);
                 accountsDbRepository.Update(fromAccount);
             }
 
             return success;
         }
+
+        /// <summary>
+        /// Transfers funds between two accounts and updates the database.
+        /// </summary>
+        /// <param name="transfer">The transfer details.</param>
+        /// <returns>True if the transfer was successful; otherwise, false.</returns>
         public bool TransferFunds(Transfer transfer)
         {
             Account fromAccount = (Account)accountsDbRepository.GetById(transfer.FromAccountNo);
@@ -86,7 +116,6 @@ namespace BankApplication.BusinessLayer.src.services
                 TransactionLog.LogTransaction(fromAccount.AccNo, transaction);
                 TransactionLog.LogTransaction(toAccount.AccNo, transaction);
 
-                TransactionsDbRepository transactionsDbRepository = new TransactionsDbRepository();
                 transactionsDbRepository.Save(transaction);
                 accountsDbRepository.Update(fromAccount);
                 accountsDbRepository.Update(toAccount);
@@ -95,14 +124,30 @@ namespace BankApplication.BusinessLayer.src.services
             return success;
         }
 
+        /// <summary>
+        /// Transfers funds to an external account and updates the database.
+        /// </summary>
+        /// <param name="externalTransfer">The external transfer details.</param>
+        /// <returns>True if the transfer was successful; otherwise, false.</returns>
         public bool TransferFunds(ExternalTransfer externalTransfer)
         {
-            IAccount fromAccount = externalTransfer.FromAccount;
+            Account fromAccount = (Account)accountsDbRepository.GetById(externalTransfer.FromAccount.AccNo);
             ExternalAccount externalAccount = externalTransfer.ToExternalAccount;
 
             bool success = accountManager.TransferFunds(externalTransfer, fromAccount);
 
+            externalTransfer.Status = TransactionStatus.OPEN;
+            externalTransfer.TransactionType = TransactionType.EXTERNALTRANSFER; 
+            TransactionLog.LogTransaction(fromAccount.AccNo, externalTransfer);
+
+            transactionsDbRepository.Save(externalTransfer);
+
             return true;
+        }
+
+        public IAccount GetAccountById(string accountNo)
+        {
+            return accountsDbRepository.GetById(accountNo);
         }
     }
 }

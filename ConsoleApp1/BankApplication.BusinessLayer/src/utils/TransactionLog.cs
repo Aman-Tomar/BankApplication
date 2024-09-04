@@ -6,12 +6,34 @@ using System.Threading.Tasks;
 using BankApplication.CommonLayer.src.enums;
 using BankApplication.CommonLayer.src.exceptions;
 using BankApplication.CommonLayer.src.models;
+using BankApplication.DataAccessLayer;
 
 namespace BankApplication.BusinessLayer.src.utils
 {
     public static class TransactionLog
     {
         private static Dictionary<string, Dictionary<TransactionType, List<Transaction>>> transactionLogs = new Dictionary<string, Dictionary<TransactionType, List<Transaction>>>();
+
+        static TransactionLog()
+        {
+            TransactionsDbRepository dbTransactionRepo = new TransactionsDbRepository();
+            List<Transaction> transactions = dbTransactionRepo.GetAll();
+
+            foreach (var transaction in transactions)
+            {
+                if(!transactionLogs.ContainsKey(transaction.FromAccount.AccNo))
+                {
+                    transactionLogs[transaction.FromAccount.AccNo] = new Dictionary<TransactionType, List<Transaction>>();
+                }
+
+                if (!transactionLogs[transaction.FromAccount.AccNo].ContainsKey(transaction.TransactionType))
+                {
+                    transactionLogs[transaction.FromAccount.AccNo][transaction.TransactionType] = new List<Transaction>();
+                }
+
+                transactionLogs[transaction.FromAccount.AccNo][transaction.TransactionType].Add(transaction);
+            }
+        }
 
         public static Dictionary<string, Dictionary<TransactionType, List<Transaction>>> GetTransactions()
         {
@@ -61,11 +83,6 @@ namespace BankApplication.BusinessLayer.src.utils
             }
 
             transactionLogs[accNo][transaction.TransactionType].Add(transaction);
-        }
-
-        internal static void LogTransaction(string accNo, object dEPOSIT, Transaction transaction)
-        {
-            throw new NotImplementedException();
         }
     }
 }

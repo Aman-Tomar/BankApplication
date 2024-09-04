@@ -14,15 +14,30 @@ using BankApplication.DataAccessLayer;
 
 namespace BankApplication.BusinessLayer.src.managers
 {
+    /// <summary>
+    /// Manages account operations such as creation, deposits, withdrawals, and fund transfers.
+    /// This class handles business logic related to account management and enforces policy constraints.
+    /// </summary>
     public class AccountManager
     {
-        private IAccountsRepository accountsRepository;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountManager"/> class.
+        /// Sets up the repository for account data access.
+        /// </summary>
         public AccountManager()
         {
-            accountsRepository = new AccountsDbRepository();
         }
 
+        /// <summary>
+        /// Creates a new account with the specified parameters.
+        /// </summary>
+        /// <param name="name">The name of the account holder.</param>
+        /// <param name="pin">The PIN for the account.</param>
+        /// <param name="balance">The initial balance of the account.</param>
+        /// <param name="privilegeType">The privilege type associated with the account.</param>
+        /// <param name="accountType">The type of account to create (e.g., Saving, Current).</param>
+        /// <returns>The created <see cref="IAccount"/> instance.</returns>
+        /// <exception cref="MinBalanceNeedsToBeMaintainedException">Thrown if the initial balance is less than the minimum balance required.</exception>
         public IAccount CreateAccount(string name, string pin, double balance, PrivilegeType privilegeType, AccountType accountType)
         {
             IAccount account = AccountFactory.CreateAccount(name, pin, balance, privilegeType, accountType);
@@ -39,6 +54,14 @@ namespace BankApplication.BusinessLayer.src.managers
             return account;
         }
 
+        /// <summary>
+        /// Deposits the specified amount into the given account.
+        /// </summary>
+        /// <param name="toAccount">The account to deposit into.</param>
+        /// <param name="amount">The amount to deposit.</param>
+        /// <returns>True if the deposit was successful, otherwise false.</returns>
+        /// <exception cref="AccountDoesNotExistException">Thrown if the account does not exist.</exception>
+        /// <exception cref="InvalidDepositAmountException">Thrown if the deposit amount is less than or equal to 0.</exception>
         public bool Deposit(Account toAccount, double amount)
         {
             if (toAccount == null)
@@ -54,6 +77,19 @@ namespace BankApplication.BusinessLayer.src.managers
             return true;
         }
 
+        /// <summary>
+        /// Withdraws the specified amount from the given account.
+        /// </summary>
+        /// <param name="fromAccount">The account to withdraw from.</param>
+        /// <param name="pin">The PIN for the account.</param>
+        /// <param name="amount">The amount to withdraw.</param>
+        /// <returns>True if the withdrawal was successful, otherwise false.</returns>
+        /// <exception cref="AccountDoesNotExistException">Thrown if the account does not exist.</exception>
+        /// <exception cref="InvalidWithdrawAmountException">Thrown if the withdraw amount is less than or equal to 0.</exception>
+        /// <exception cref="InactiveAccountException">Thrown if the account is inactive.</exception>
+        /// <exception cref="InvalidPinException">Thrown if the PIN is incorrect.</exception>
+        /// <exception cref="MinBalanceNeedsToBeMaintainedException">Thrown if the withdrawal would violate the minimum balance requirement.</exception>
+        /// <exception cref="DailyLimitExceededException">Thrown if the daily limit for withdrawals is exceeded.</exception>
         public bool Withdraw(Account fromAccount, string pin, double amount)
         {
             
@@ -93,6 +129,17 @@ namespace BankApplication.BusinessLayer.src.managers
             return true;
         }
 
+        /// <summary>
+        /// Transfers funds from one account to another.
+        /// </summary>
+        /// <param name="transfer">The transfer details.</param>
+        /// <param name="fromAccount">The account to transfer from.</param>
+        /// <param name="toAccount">The account to transfer to.</param>
+        /// <returns>True if the transfer was successful, otherwise false.</returns>
+        /// <exception cref="InactiveAccountException">Thrown if either of the accounts is inactive.</exception>
+        /// <exception cref="InvalidPinException">Thrown if the PIN is incorrect.</exception>
+        /// <exception cref="MinBalanceNeedsToBeMaintainedException">Thrown if the transfer would violate the minimum balance requirement.</exception>
+        /// <exception cref="DailyLimitExceededException">Thrown if the daily limit for withdrawals is exceeded.</exception>
         public bool TransferFunds(Transfer transfer, Account fromAccount, Account toAccount)
         {
             double amount = transfer.Amount;
@@ -127,6 +174,16 @@ namespace BankApplication.BusinessLayer.src.managers
             return true;
         }
 
+        /// <summary>
+        /// Handles external fund transfers.
+        /// </summary>
+        /// <param name="externalTransfer">The external transfer details.</param>
+        /// <param name="fromAccount">The account to transfer from.</param>
+        /// <returns>True if the external transfer was successful, otherwise false.</returns>
+        /// <exception cref="InactiveAccountException">Thrown if the account is inactive.</exception>
+        /// <exception cref="InvalidPinException">Thrown if the PIN is incorrect.</exception>
+        /// <exception cref="MinBalanceNeedsToBeMaintainedException">Thrown if the transfer would violate the minimum balance requirement.</exception>
+        /// <exception cref="DailyLimitExceededException">Thrown if the daily limit for withdrawals is exceeded.</exception>
         public bool TransferFunds(ExternalTransfer externalTransfer, IAccount fromAccount)
         {
             double amount = externalTransfer.Amount;
@@ -141,7 +198,9 @@ namespace BankApplication.BusinessLayer.src.managers
             {
                 throw new InvalidPinException("Invalid PIN.");
             }
-            if (account.Balance - amount < account.Policy.GetMinBalance())
+
+            IPolicy policy = PolicyFactory.Instance.CreatePolicy(fromAccount.GetAccType().ToString(), fromAccount.PrivilegeType.ToString());
+            if (account.Balance - amount < policy.GetMinBalance())
             {
                 throw new MinBalanceNeedsToBeMaintainedException("Cannot transfer due to required minimum balance.");
             }
@@ -154,15 +213,14 @@ namespace BankApplication.BusinessLayer.src.managers
                 throw new DailyLimitExceededException("Daily limit exceeded.");
             }
 
-            externalTransfer.Status = TransactionStatus.OPEN;
-            TransactionLog.LogTransaction(account.AccNo, TransactionType.EXTERNALTRANSFER, externalTransfer);
-
-            TransactionsDbRepository transactionsDbRepository = new TransactionsDbRepository();
-            transactionsDbRepository.Save(externalTransfer);
-
             return true;
         }
 
+        /// <summary>
+        /// Retrieves the total amount of funds withdrawn today from the specified account.
+        /// </summary>
+        /// <param name="account">The account to check.</param>
+        /// <returns>The total amount of funds withdrawn today.</returns>
         private double GetDailyLimitUsed(Account account)
         {
             double dailyLimitUsed = 0;

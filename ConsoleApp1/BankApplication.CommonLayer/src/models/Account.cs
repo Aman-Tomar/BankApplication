@@ -9,6 +9,10 @@ using BankApplication.CommonLayer.src.interfaces;
 
 namespace BankApplication.CommonLayer.src.models
 {
+    /// <summary>
+    /// The <see cref="Account"/> class is an abstract base class that defines the common properties
+    /// and methods for various types of bank accounts. It implements the <see cref="IAccount"/> interface.
+    /// </summary>
     public abstract class Account : IAccount
     {
         public string AccNo { get; set; }

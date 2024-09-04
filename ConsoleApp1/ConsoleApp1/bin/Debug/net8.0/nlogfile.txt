@@ -6,3 +6,15 @@
    at BankApplication.BusinessLayer.src.utils.TransactionLog.LogTransaction(String accNo, Object dEPOSIT, Transaction transaction) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\utils\TransactionLog.cs:line 68
    at BankApplication.BusinessLayer.src.managers.AccountManager.TransferFunds(Transfer transfer) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\managers\AccountManager.cs:line 150
    at ConsoleApp1.Program.Main() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 144`
+`2024-09-04 11:39:57.3966|ERROR|ConsoleApp1.Program|Error during Deposit|System.NullReferenceException: Object reference not set to an instance of an object.
+   at ConsoleApp1.Program.DepositMoney() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 130`
+`2024-09-04 11:42:55.1341|ERROR|ConsoleApp1.Program|Error during Deposit|System.NullReferenceException: Object reference not set to an instance of an object.
+   at ConsoleApp1.Program.DepositMoney() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 130`
+`2024-09-04 11:48:30.3219|ERROR|ConsoleApp1.Program|error during External Transfer|System.NotImplementedException: The method or operation is not implemented.
+   at BankApplication.BusinessLayer.src.utils.TransactionLog.LogTransaction(String accNo, Object dEPOSIT, Transaction transaction) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\utils\TransactionLog.cs:line 90
+   at BankApplication.BusinessLayer.src.services.AccountManagerWrapper.TransferFunds(ExternalTransfer externalTransfer) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\services\AccountManagerWrapper.cs:line 140
+   at ConsoleApp1.Program.ExternalTransfer() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 224`
+`2024-09-04 11:52:29.1592|ERROR|ConsoleApp1.Program|error during External Transfer|System.NotImplementedException: The method or operation is not implemented.
+   at BankApplication.BusinessLayer.src.utils.TransactionLog.LogTransaction(String accNo, Object dEPOSIT, Transaction transaction) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\utils\TransactionLog.cs:line 90
+   at BankApplication.BusinessLayer.src.services.AccountManagerWrapper.TransferFunds(ExternalTransfer externalTransfer) in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\BankApplication.BusinessLayer\src\services\AccountManagerWrapper.cs:line 140
+   at ConsoleApp1.Program.ExternalTransfer() in C:\Users\Aman.Tomar\source\BankApplication\ConsoleApp1\ConsoleApp1\Program.cs:line 224`
